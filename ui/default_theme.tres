@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dfwbt8ompt0ya"]
+
+[ext_resource type="StyleBox" uid="uid://blucpr1gpv1fm" path="res://ui/button_hover_style_box.tres" id="1_1ab7e"]
+[ext_resource type="StyleBox" uid="uid://dqk50gghef0pn" path="res://ui/button_style_box.tres" id="2_htbda"]
+[ext_resource type="Texture2D" uid="uid://cjkuksh0hcjja" path="res://ui/value_bar_border.png" id="4_y4vt1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_im4ks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w4rg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ta4ou"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1p31"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kuck2"]
+texture = ExtResource("4_y4vt1")
+texture_margin_top = 1.0
+texture_margin_bottom = 1.0
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 6
+Button/styles/focus = SubResource("StyleBoxEmpty_im4ks")
+Button/styles/hover = ExtResource("1_1ab7e")
+Button/styles/normal = ExtResource("2_htbda")
+Button/styles/pressed = ExtResource("2_htbda")
+CheckButton/styles/normal = SubResource("StyleBoxEmpty_5w4rg")
+CheckButton/styles/pressed = SubResource("StyleBoxEmpty_ta4ou")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_e1p31")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_e1p31")
+HSlider/styles/slider = SubResource("StyleBoxTexture_kuck2")
+Label/font_sizes/font_size = 6
+RichTextLabel/font_sizes/normal_font_size = 6
