@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdi2tkqu7mn8u"]
+
+[ext_resource type="Texture2D" uid="uid://oi01xsfowtk0" path="res://effects/jump_effect.png" id="1_t3dfs"]
+[ext_resource type="Script" path="res://effects/jump_effect.gd" id="2_4htc1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puo0e"]
+atlas = ExtResource("1_t3dfs")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjqyh"]
+atlas = ExtResource("1_t3dfs")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aitqx"]
+atlas = ExtResource("1_t3dfs")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itmtu"]
+atlas = ExtResource("1_t3dfs")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vhf27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puo0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjqyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aitqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itmtu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="JumpEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_vhf27")
+autoplay = "default"
+frame = 1
+frame_progress = 0.115763
+offset = Vector2(0, -8)
+script = ExtResource("2_4htc1")

@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8nmkm8sx6w67"]
+
+[ext_resource type="PackedScene" uid="uid://d0m2qdkxcsd5b" path="res://projectile.tscn" id="1_sn6r5"]
+[ext_resource type="Texture2D" uid="uid://bopduboii7yga" path="res://enemies/enemy_bullet.png" id="2_0o1uc"]
+[ext_resource type="Script" path="res://enemies/enemy_plant_bullet.gd" id="2_rll27"]
+[ext_resource type="PackedScene" uid="uid://bf7coyeg75jx1" path="res://stats.tscn" id="3_t81v7"]
+[ext_resource type="Script" path="res://Collisions/hurt_box.gd" id="4_t5467"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ul3db"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63bka"]
+atlas = ExtResource("2_0o1uc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kx12"]
+atlas = ExtResource("2_0o1uc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wx8q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63bka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kx12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bolsn"]
+radius = 5.0
+
+[node name="EnemyPlantBullet" instance=ExtResource("1_sn6r5")]
+script = ExtResource("2_rll27")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="0"]
+position = Vector2(8.9407e-08, -5.66244e-07)
+scale = Vector2(0.5, 0.5)
+
+[node name="HitBox" parent="." index="1"]
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_ul3db")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_wx8q0")
+autoplay = "default"
+frame_progress = 0.307119
+
+[node name="Stats" parent="." index="3" instance=ExtResource("3_t81v7")]
+max_health = 1
+
+[node name="Hurtbox" type="Area2D" parent="." index="4"]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("4_t5467")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_bolsn")
+
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

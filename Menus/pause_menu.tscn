@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://de6twnmv5pmop"]
+
+[ext_resource type="Script" path="res://Menus/pause_menu.gd" id="1_p80l1"]
+[ext_resource type="PackedScene" uid="uid://ccs6hedwub7gj" path="res://Menus/in_game_settings.tscn" id="2_d6pcc"]
+
+[node name="PauseMenu" type="ColorRect"]
+process_mode = 3
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_p80l1")
+
+[node name="PauseMenu" type="Node2D" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "Game Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resume" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Resume Game"
+
+[node name="Load Game" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Load Game"
+
+[node name="SettingsButton" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitToMenu" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Quit to Menu"
+
+[node name="Quit" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+text = "Quit"
+
+[node name="InGameSettings" parent="." instance=ExtResource("2_d6pcc")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/Load Game" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/QuitToMenu" to="." method="_on_quit_to_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
